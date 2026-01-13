@@ -1,0 +1,30 @@
+﻿@page "/"
+@using Docker.DotNet
+@using Docker.DotNet.Models
+
+<PageTitle>Home</PageTitle>
+
+@if (_containers is not null)
+{
+	<MudTable Items="@_containers" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info" Style="">
+		<HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>State</MudTh>
+        <MudTh>Status</MudTh>
+        <MudTh>TimeStarted</MudTh>
+        <MudTh>Image</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name"><MudNavLink Href="@($"container/{@GetContainerName(@context)}/inspect")">@GetContainerName(@context)</MudNavLink></MudTd>
+        <MudTd DataLabel="State">@context.State</MudTd>
+        <MudTd DataLabel="Status">@context.Status</MudTd>
+        <MudTd DataLabel="TimeStarted">@context.Created</MudTd>
+        <MudTd DataLabel="ImageName">@context.Image</MudTd>
+    </RowTemplate>
+	</MudTable>
+}
+
+@code {
+
+	
+}

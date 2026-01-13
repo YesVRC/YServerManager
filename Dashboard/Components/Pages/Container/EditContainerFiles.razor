@@ -1,0 +1,40 @@
+@page "/container/{id}/edit_files"
+@using Dashboard.Components.Controls
+@using Dashboard.Services
+@using Docker.DotNet
+@using Docker.DotNet.Models
+
+@inject DockerClient Client
+<h3>EditContainerFiles</h3>
+
+@if (_containerInspectResponse is not null)
+{
+    <MudTreeView T="string" ReadOnly>
+        
+        @foreach (var mount in _containerInspectResponse.Mounts)
+        {
+            @if (!mount.Source.EndsWith(".sock"))
+            {
+                <DirectoryTreeView Path="@mount.Source" FullPath="true"/>
+            }
+        }
+    </MudTreeView>
+}
+
+
+@code {
+    [Parameter] public required string Id { get; set; }
+    
+    ContainerInspectResponse? _containerInspectResponse;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _containerInspectResponse = await Client.Containers.InspectContainerAsync(Id);
+        await base.OnInitializedAsync();
+    }
+
+    
+    
+    
+
+}

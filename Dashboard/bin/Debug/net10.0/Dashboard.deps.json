@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Dashboard/1.0.0": {
+        "dependencies": {
+          "Docker.DotNet.Enhanced": "3.131.1",
+          "MudBlazor": "9.0.0-preview.1"
+        },
+        "runtime": {
+          "Dashboard.dll": {}
+        }
+      },
+      "Docker.DotNet.Enhanced/3.131.1": {
+        "runtime": {
+          "lib/net10.0/Docker.DotNet.dll": {
+            "assemblyVersion": "3.131.0.0",
+            "fileVersion": "3.131.1.1"
+          }
+        }
+      },
+      "MudBlazor/9.0.0-preview.1": {
+        "runtime": {
+          "lib/net10.0/MudBlazor.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dashboard/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Docker.DotNet.Enhanced/3.131.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hGLHCNUsQbT2Ab/HUznRnNqYZQs40zInXa3eLwYjeNyfUYbw1pqqDGqcOLl5uGepS8IuigEYakEdAcVT/2ezYg==",
+      "path": "docker.dotnet.enhanced/3.131.1",
+      "hashPath": "docker.dotnet.enhanced.3.131.1.nupkg.sha512"
+    },
+    "MudBlazor/9.0.0-preview.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T7A6GWdk0wmIyenq4IOc1s7Sq5LMdph5AEKQCI54TP/lSLYNtmjIwlkI3yaHerZOu08Vw1asMyaiUhN1DWfjVw==",
+      "path": "mudblazor/9.0.0-preview.1",
+      "hashPath": "mudblazor.9.0.0-preview.1.nupkg.sha512"
+    }
+  }
+}

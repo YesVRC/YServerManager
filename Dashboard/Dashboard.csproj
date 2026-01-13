@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>3912e7ba-a34c-47f7-8824-815bf1c2d52f</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet.Enhanced" Version="3.131.1" />
+    <PackageReference Include="MudBlazor" Version="9.0.0-preview.1" />
+  </ItemGroup>
+</Project>

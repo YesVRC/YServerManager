@@ -1,0 +1,39 @@
+@page "/container/add"
+@using Docker.DotNet
+@using Docker.DotNet.Models
+
+@inject DockerClient Client
+
+<h3>AddContainer</h3>
+
+<MudAutocomplete
+    @bind-Value="_value"
+    SearchFunc="Search"
+    />
+
+@code {
+
+    IList<VolumeResponse>? _volumes;
+    private string _value;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _volumes = (await Client.Volumes.ListAsync()).Volumes;
+        await base.OnInitializedAsync();
+    }
+
+    private async Task<IEnumerable<string>> Search(string value, CancellationToken token)
+    {
+        if(_volumes is null) return Enumerable.Empty<string>();
+        
+        var allVolumes = _volumes.Select(x => x.Name);
+
+        // if text is null or empty, show complete list
+        if (string.IsNullOrEmpty(value))
+        {
+            return allVolumes;
+        }
+
+        return allVolumes.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+}

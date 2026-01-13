@@ -1,0 +1,28 @@
+﻿<MudNavMenu Rounded="true" Bordered="true" Style="backdrop-filter: blur(10px)">
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+    
+    <MudNavGroup Title="Servers" Icon="@Icons.Material.Filled.List">
+        @if (_containers is not null)
+        {
+            @foreach (var container in _containers)
+            {
+                string name = container.Names[0].Split('/')[1];
+                <MudNavGroup Match="NavLinkMatch.Prefix" Style="@TextBackground(container.State)" Title="@name">
+                    <MudNavLink Href="@($"container/{name}/inspect")">Inspect</MudNavLink>
+                    <MudNavLink Href="@($"container/{name}/edit_files")">Edit Files</MudNavLink>
+                </MudNavGroup>
+            }
+        }
+        <MudNavLink Href="/container/add" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Add Container</MudNavLink>
+    </MudNavGroup>
+    
+    
+
+</MudNavMenu>
+
+@code {
+    
+
+}
+
+
