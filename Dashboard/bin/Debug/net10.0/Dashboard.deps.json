@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v10.0": {
       "Dashboard/1.0.0": {
         "dependencies": {
+          "BlazorMonaco": "3.4.0",
           "Docker.DotNet.Enhanced": "3.131.1",
-          "MudBlazor": "9.0.0-preview.1"
+          "MudBlazor": "9.0.0-preview.2"
         },
         "runtime": {
           "Dashboard.dll": {}
+        }
+      },
+      "BlazorMonaco/3.4.0": {
+        "runtime": {
+          "lib/net9.0/BlazorMonaco.dll": {
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.0.0"
+          }
         }
       },
       "Docker.DotNet.Enhanced/3.131.1": {
@@ -23,7 +32,7 @@
           }
         }
       },
-      "MudBlazor/9.0.0-preview.1": {
+      "MudBlazor/9.0.0-preview.2": {
         "runtime": {
           "lib/net10.0/MudBlazor.dll": {
             "assemblyVersion": "9.0.0.0",
@@ -39,6 +48,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BlazorMonaco/3.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oVdjF5t6pOJLj/XKlNlO4uXuYU+xsBMLak3ZL1Q7Zyb8vBTOhzibampmhSUVvfXWe5e4w0HTKBZwQvuTJ77smg==",
+      "path": "blazormonaco/3.4.0",
+      "hashPath": "blazormonaco.3.4.0.nupkg.sha512"
+    },
     "Docker.DotNet.Enhanced/3.131.1": {
       "type": "package",
       "serviceable": true,
@@ -46,12 +62,12 @@
       "path": "docker.dotnet.enhanced/3.131.1",
       "hashPath": "docker.dotnet.enhanced.3.131.1.nupkg.sha512"
     },
-    "MudBlazor/9.0.0-preview.1": {
+    "MudBlazor/9.0.0-preview.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-T7A6GWdk0wmIyenq4IOc1s7Sq5LMdph5AEKQCI54TP/lSLYNtmjIwlkI3yaHerZOu08Vw1asMyaiUhN1DWfjVw==",
-      "path": "mudblazor/9.0.0-preview.1",
-      "hashPath": "mudblazor.9.0.0-preview.1.nupkg.sha512"
+      "sha512": "sha512-n17Z34Mr2cL8NuW/Xl6+dL6Py7EjhzGrUArBml3ZTufnp4UMsfucWJWLAW388iSErB7/IwHT7G7cMmz/A5CAkg==",
+      "path": "mudblazor/9.0.0-preview.2",
+      "hashPath": "mudblazor.9.0.0-preview.2.nupkg.sha512"
     }
   }
 }

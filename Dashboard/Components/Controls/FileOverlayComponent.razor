@@ -1,5 +1,21 @@
-<h3>FileOverlayComponent</h3>
+@using Dashboard.Services
+<MudOverlay @ref="Overlay" Visible="_isVisible">
+    <StandaloneCodeEditor @ref="Editor"/>
+</MudOverlay>
 
 @code {
+    [Parameter] public string FilePath { get; set; }
     
+    private MudOverlay? Overlay;
+    private StandaloneCodeEditor? Editor;
+
+    private bool _isVisible = false;
+
+    public async Task OpenFile(string file)
+    {
+        using StreamReader fileReader = new(file);
+        await Editor.SetValue(await fileReader.ReadToEndAsync());
+        _isVisible = true;
+    }
+
 }

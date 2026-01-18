@@ -2,7 +2,7 @@ namespace Dashboard.Services;
 
 public static class FileHelpers
 {
-    public static readonly string[] TextFileFormats =
+    public static readonly List<string> TextFileFormats =
     [
         // Basic Text & Documents
         ".txt", ".log", ".md", ".rtf", ".csv", ".tsv", 
@@ -17,7 +17,7 @@ public static class FileHelpers
         ".cs", ".c", ".cpp", ".h", ".hpp", ".java", ".py", ".rb", ".swift", ".go", ".rs", ".kt", ".sh", ".bat", "lua"
     ];
     
-    public static readonly string[] AudioFileFormats =
+    public static readonly List<string> AudioFileFormats =
     [
         // Standard Compressed (Lossy)
         ".mp3", ".aac", ".m4a", ".ogg", ".wma", ".opus",
@@ -32,7 +32,7 @@ public static class FileHelpers
         ".amr", ".aax", ".m4p", ".webm"
     ];
     
-    public static readonly string[] ArchiveFileFormats =
+    public static readonly List<string> ArchiveFileFormats =
     [
         // Standard Universal Archives
         ".zip", ".zipx", ".7z", ".rar", 
@@ -50,7 +50,7 @@ public static class FileHelpers
         ".cbz", ".cbr", ".warc"
     ];
 
-    public static readonly string[] VideoFileFormats =
+    public static readonly List<string> VideoFileFormats =
     [
         // Universal & Web Standards
         ".mp4", ".webm", ".m4v", ".mov",
@@ -65,7 +65,7 @@ public static class FileHelpers
         ".mpg", ".mpeg", ".vob", ".3gp", ".3g2", ".mxf", ".asf", ".ts"
     ];
     
-    public static readonly string[] ImageFileFormats =
+    public static readonly List<string> ImageFileFormats =
     [
         // Standard Web & Raster Formats
         ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ".tiff", ".tif",
@@ -79,6 +79,8 @@ public static class FileHelpers
         // Professional & Editing Formats
         ".psd", ".psb", ".raw", ".cr2", ".nef", ".arw", ".pdf"
     ];
+    
+    public static IEnumerable<string> AllowedExtensions => TextFileFormats.Concat(AudioFileFormats).Concat(VideoFileFormats).Concat(ImageFileFormats);
 
     public static FileFormat GetFileCategory(string path)
     {

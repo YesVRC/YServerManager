@@ -5,12 +5,13 @@
 @using Docker.DotNet.Models
 
 @inject DockerClient Client
+@rendermode InteractiveServer
 <h3>EditContainerFiles</h3>
 
 @if (_containerInspectResponse is not null)
 {
-    <MudTreeView T="string" ReadOnly>
-        
+    <MudTreeView T="string">
+
         @foreach (var mount in _containerInspectResponse.Mounts)
         {
             @if (!mount.Source.EndsWith(".sock"))
@@ -19,22 +20,31 @@
             }
         }
     </MudTreeView>
+    <StandaloneCodeEditor @ref="_standaloneCodeEditor"/>
+
+    @* <FileOverlayComponent @ref="@FileOverlayComponent"/> *@
+    
 }
 
 
 @code {
     [Parameter] public required string Id { get; set; }
-    
+    FileOverlayComponent? FileOverlayComponent;
+    StandaloneCodeEditor? _standaloneCodeEditor;
     ContainerInspectResponse? _containerInspectResponse;
 
     protected override async Task OnInitializedAsync()
     {
-        _containerInspectResponse = await Client.Containers.InspectContainerAsync(Id);
         await base.OnInitializedAsync();
     }
 
-    
-    
-    
+    protected override async Task OnParametersSetAsync()
+    {
+        _containerInspectResponse = await Client.Containers.InspectContainerAsync(Id);
+        
+        await base.OnParametersSetAsync();
+        StateHasChanged();
+    }
+
 
 }
