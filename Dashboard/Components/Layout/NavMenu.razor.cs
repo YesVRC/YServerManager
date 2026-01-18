@@ -11,6 +11,7 @@ namespace Dashboard.Components.Layout;
 public partial class NavMenu
 {
     [Inject] private DockerClient Client { get; set; }
+    [Inject] private ThemeService ThemeService { get; set; }
     
     IList<ContainerListResponse>? _containers;
 
@@ -22,32 +23,52 @@ public partial class NavMenu
             {
                 Limit = 10,
             });
-
         await base.OnInitializedAsync();
     }
 
-    private string ColorFromStatus(string status)
+    private string IconFromStatus(string status)
     {
-        
-        //Palette palette = ThemeService.GetState(x => x.CurrentPalette) ?? throw new InvalidOperationException();
         switch (status)
         {
             case "running":
-                return "success";
+                return Icons.Material.Filled.PlayArrow;
                 
             case "exited":
-                return "error";
+                return Icons.Material.Filled.Stop;
                 
             case "restarting":
-                return "secondary";
+                return Icons.Material.Filled.Refresh;
                 
             case "dead":
-                return "error-lighten";
+                return Icons.Material.Filled.Error;
             
             default:
-                return "appbar-background";
+                return Icons.Material.Filled.Info;
+        }
+    }
+
+    private MudColor ColorFromStatus(string status)
+    {
+        
+        Palette palette = ThemeService.CurrentPalette ?? throw new InvalidOperationException();
+        switch (status)
+        {
+            case "running":
+                return palette.Success;
+                
+            case "exited":
+                return palette.Error;
+                
+            case "restarting":
+                return palette.Secondary;
+                
+            case "dead":
+                return palette.ErrorLighten;
+            
+            default:
+                return palette.AppbarBackground;
         }
     }
     
-    private string TextBackground(string status) => $"background: rgb(from var(--mud-palette-{ColorFromStatus(status)}) r g b / .1";
+    private string TextBackground(string status) => $"background: {ColorFromStatus(status).SetAlpha(.3)}";
 }
