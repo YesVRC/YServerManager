@@ -17,8 +17,11 @@
                                 <div style="display: grid; grid-template-columns: 1fr auto; align-items: center; width: 100%">
                                     <MudText Style="justify-self: start;">@fileName</MudText>
                                     <div style="justify-self: end;">
-                                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Medium" Color="Color.Inherit" OnClick="(args) => OnClickEditFile(file)"/>
-                                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Medium" Color="Color.Inherit" />
+                                        @if (FileOverlayComponent is not null)
+                                        {
+                                            <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Medium" Color="Color.Inherit" OnClick="async (args) => await OnClickEditFile(file)"/>
+                                        }
+                                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Medium" Color="Color.Inherit"/>
                                     </div>
                                 </div>
                             </BodyContent>
