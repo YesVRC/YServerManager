@@ -9,7 +9,7 @@ public partial class DirectoryTreeView
     [Parameter] public string? Path { get; set; }
     [Parameter] public bool FullPath { get; set; }
     
-    [CascadingParameter] FileOverlayComponent? FileOverlayComponent { get; set; }
+    [CascadingParameter] public required FileOverlayComponent FileOverlayComponent { get; set; }
     
     IEnumerable<string>? _files;
     private bool isExpanded = false;

@@ -12,17 +12,22 @@
 {
     <MudTreeView T="string">
 
-        @foreach (var mount in _containerInspectResponse.Mounts)
+        @if (FileOverlayComponent is not null)
         {
-            @if (!mount.Source.EndsWith(".sock"))
+            <CascadingValue IsFixed="true" Value="FileOverlayComponent">
+            @foreach (var mount in _containerInspectResponse.Mounts)
             {
-                <DirectoryTreeView @key="Id" Path="@mount.Source" FullPath="true"/>
+                @if (!mount.Source.EndsWith(".sock"))
+                {
+                    <DirectoryTreeView @key=@($"{Id}-{_containerInspectResponse.Mounts.IndexOf(mount)}") Path="@mount.Source" FullPath="true"/>
+                }
             }
+            </CascadingValue>
         }
     </MudTreeView>
-    <StandaloneCodeEditor @ref="_standaloneCodeEditor"/>
+    @* <StandaloneCodeEditor @ref="_standaloneCodeEditor"/> *@
 
-    @* <FileOverlayComponent @ref="@FileOverlayComponent"/> *@
+    <FileOverlayComponent @ref="@FileOverlayComponent"/>
     
 }
 
@@ -30,7 +35,7 @@
 @code {
     [Parameter] public required string Id { get; set; }
     FileOverlayComponent? FileOverlayComponent;
-    StandaloneCodeEditor? _standaloneCodeEditor;
+    StandaloneCodeEditor _standaloneCodeEditor;
     ContainerInspectResponse? _containerInspectResponse;
 
     protected override async Task OnInitializedAsync()
