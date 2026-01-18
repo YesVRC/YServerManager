@@ -16,6 +16,25 @@
 
 
   <ItemGroup>
+    <Folder Include="bin\Debug\net9.0\" />
     <Folder Include="Components\Controls\FileViewers\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net10.0\appsettings.Development.json" />
+    <Content Include="bin\Debug\net10.0\appsettings.json" />
+    <Content Include="bin\Debug\net10.0\BlazorMonaco.dll" />
+    <Content Include="bin\Debug\net10.0\Dashboard" />
+    <Content Include="bin\Debug\net10.0\Dashboard.deps.json" />
+    <Content Include="bin\Debug\net10.0\Dashboard.dll" />
+    <Content Include="bin\Debug\net10.0\Dashboard.exe" />
+    <Content Include="bin\Debug\net10.0\Dashboard.pdb" />
+    <Content Include="bin\Debug\net10.0\Dashboard.runtimeconfig.json" />
+    <Content Include="bin\Debug\net10.0\Dashboard.staticwebassets.endpoints.json" />
+    <Content Include="bin\Debug\net10.0\Dashboard.staticwebassets.runtime.json" />
+    <Content Include="bin\Debug\net10.0\Dashboard.staticwebassets.runtime.WSL.json" />
+    <Content Include="bin\Debug\net10.0\Docker.DotNet.dll" />
+    <Content Include="bin\Debug\net10.0\MudBlazor.dll" />
   </ItemGroup>
 </Project>
