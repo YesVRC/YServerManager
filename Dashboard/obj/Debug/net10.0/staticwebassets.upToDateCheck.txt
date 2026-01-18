@@ -1,6 +1,0 @@
-wwwroot\favicon.ico
-C:\Users\User\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.1\build\..\_framework\blazor.web.js
-C:\Users\User\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.1\build\..\_framework\blazor.server.js
-C:\Users\User\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.1\_framework\blazor.web.js
-C:\Users\User\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.1\_framework\blazor.server.js
-F:\YSNT\YServerManager\Dashboard\wwwroot\favicon.ico

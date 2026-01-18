@@ -16,7 +16,7 @@
         {
             @if (!mount.Source.EndsWith(".sock"))
             {
-                <DirectoryTreeView Path="@mount.Source" FullPath="true"/>
+                <DirectoryTreeView @key="Id" Path="@mount.Source" FullPath="true"/>
             }
         }
     </MudTreeView>
