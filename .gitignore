@@ -1,2 +1,6 @@
-Dashboard/bin
-Dashboard/obj
+tmp
+tools
+*.exe
+.env
+.idea
+.vscode

@@ -1,0 +1,99 @@
+package components
+
+type PageMetadata struct {
+	Title string
+	Path  string
+}
+
+templ Hello(meta PageMetadata, name string) {
+	@Base(meta) {
+		<h1 class="text-3xl text-primary">Hello There, { name }</h1>
+		<h2 class="text-2xl text-secondary">Current Route Is: { meta.Path }</h2>
+	}
+}
+
+templ Base(meta PageMetadata) {
+	<!DOCTYPE html>
+	<html data-theme="default">
+		<head>
+			<title>{ meta.Title }</title>
+			<link href="./assets/output.css" rel="stylesheet"/>
+			@StyleTheme()
+			
+		</head>
+		<body class="bg-background h-stretch">
+			@Background()
+			@NavMenu(meta.Path)
+		<main class="pl-72 h-stretch">
+   			<div class="p-4 m-4 border border-default border-dashed rounded-base backdrop-blur-xl bg-slate-300/25 h-stretch ">
+			{ children... }
+			</div>
+		</main>
+		@ActiveNavScript(meta.Path)
+		</body>
+	</html>
+}
+
+templ NavMenu(path string) {
+	<aside class="flex-col w-2xs flex z-50 inset-y-0 fixed backdrop-blur-xl bg-slate-300/25 py-2 drop-shadow-black drop-shadow-lg">
+		<div class="px-6 overflow-y-auto gap-y-2 flex flex-col h-stretch">
+			<div class="items-center shrink-0 h-16 flex">
+				<h1 class="ml-4">YServerManager</h1>
+			</div>
+			<nav id="navList" class="flex-col flex-1 flex grow h-stretch bg-background/15 backdrop-blur rounded-xl">
+				<a href="/" class="nav-button rounded-tr-xl">🏠 Home</a>
+				<a href="/about" class="nav-button">❓ About</a>
+				<a href="/contact" class="nav-button">☎️ Contact</a>
+				<a href="/settings" class="nav-button mt-auto">⚙️ Settings</a>
+			</nav>
+		</div>
+		
+	</aside>
+
+}
+
+templ StyleTheme(){
+	<style>
+		html[data-theme='custom'] {
+			--color-primary-light: var(--color-green-100);
+    		--color-primary-dark: var(--color-green-800);
+
+    		--color-secondary-light: var(--color-pink-100);
+    		--color-secondary-dark: var(--color-pink-500);
+		}
+	</style>
+}
+
+templ Background(){
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1920" height="1080" preserveAspectRatio="none" viewBox="0 0 1920 1080" class="fixed top-0 left-0 -z-1 w-screen h-screen brightness-50">
+    <g mask="url(&quot;#SvgjsMask1357&quot;)" fill="none">
+        <rect class="" width="1920" height="1080" x="0" y="0" fill="url(&quot;#SvgjsLinearGradient1358&quot;)"></rect>
+        <path d="M 0,327 C 96,293 288,128.6 480,157 C 672,185.4 768,482.4 960,469 C 1152,455.6 1248,89 1440,90 C 1632,91 1824,397.2 1920,474L1920 1080L0 1080z" class="fill-primary/30 brightness-50"></path>
+        <path d="M 0,623 C 128,690.8 384,930 640,962 C 896,994 1024,791.4 1280,783 C 1536,774.6 1792,892.6 1920,920L1920 1080L0 1080z" class="fill-secondary/40 brightness-50"></path>
+    </g>
+    <defs>
+        <mask id="SvgjsMask1357">
+            <rect width="1920" height="1080" fill="#ffffff"></rect>
+        </mask>
+        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient1358">
+            <stop class="stop-color-primary brightness-50" offset="0"></stop>
+            <stop class="stop-color-secondary brightness-50" offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>
+}
+
+templ ActiveNavScript(currentPath string){
+	
+	<script>
+		document.querySelectorAll('#navList a').forEach(link => {
+			console.log(link.getAttribute('href'), "{{ currentPath }}");
+			if (link.getAttribute('href') === "{{ currentPath }}") {
+				link.classList.add('nav-active');
+			} else {
+				link.classList.remove('nav-active');
+			}
+		});
+	</script>
+	
+}
